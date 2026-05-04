@@ -1,0 +1,46 @@
+---
+import '../styles/global.css';
+const { title, description } = Astro.props;
+---
+<html lang="tr">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title} | AI DECODER</title>
+    <meta name="description" content={description} />
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@700;800&family=Inter:wght@400;600&display=swap" rel="stylesheet" />
+</head>
+<body>
+    <div id="splash-screen">
+        <div class="loader-content">
+            <h2 class="logo">AI<span>DECODER</span></h2>
+            <div class="loader-bar"><div class="loader-progress"></div></div>
+        </div>
+    </div>
+
+    <header>
+        <div class="nav-container">
+            <a href="/" class="logo">AI<span>DECODER</span></a>
+            <nav style="display: flex; gap: 2rem;">
+                <a href="/" style="color: white; text-decoration: none; font-size: 0.9rem;">Ana Sayfa</a>
+            </nav>
+        </div>
+    </header>
+
+    <slot />
+
+    <footer style="padding: 4rem 5%; border-top: 1px solid var(--border-light); text-align: center; color: var(--text-muted);">
+        <p>&copy; 2026 AI DECODER - Tüm Hakları Saklıdır.</p>
+    </footer>
+
+    <script is:inline>
+        window.addEventListener('load', () => {
+            const splash = document.getElementById('splash-screen');
+            setTimeout(() => {
+                splash.style.opacity = '0';
+                setTimeout(() => splash.style.display = 'none', 600);
+            }, 800);
+        });
+    </script>
+</body>
+</html>
